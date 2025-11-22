@@ -1,0 +1,9 @@
+# 排除构建目录
+build/** linguist-generated=true
+dist/** linguist-generated=true
+cmake-build-*/** linguist-generated=true
+#cpp为主语言
+*.c linguist-language=C
+*.cpp linguist-language=CPP
+*.h linguist-language=C
+*.hpp linguist-language=CPP
