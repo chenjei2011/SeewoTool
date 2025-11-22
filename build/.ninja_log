@@ -1,0 +1,13 @@
+# ninja log v6
+25	1030	7830834453120955	build.ninja	2b9d4ef194286278
+440	13920	7824642363427369	CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui.cpp.obj	ac48f0b77b638562
+212	2394	7824653417949724	CMakeFiles/demo.dir/main.cpp.obj	827b1d4a3a8d1cc7
+509	8670	7824642364140920	CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_tables.cpp.obj	90f12a2048908d4
+8683	16859	7824642445930758	CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_widgets.cpp.obj	40e3ecfcfe5dd6ea
+9210	10193	7824672049632718	demo.exe	10bb5f882a71fd3a
+465	9134	7824642363583570	CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_demo.cpp.obj	e56e36223274d6ea
+486	10454	7824642363929699	CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_draw.cpp.obj	8afa551847bedc50
+192	1831	7824644698189249	CMakeFiles/demo.dir/D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.obj	dec9ba80495952ca
+9135	15349	7824642450400571	CMakeFiles/demo.dir/D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.cpp.obj	9b15ac5745a6600e
+184	9200	7824671959397221	CMakeFiles/demo.dir/gui.cpp.obj	95605217777d9c96
+131	807	7824661437897323	CMakeFiles/demo.dir/IsUsb.cpp.obj	439635adc7a48e96
