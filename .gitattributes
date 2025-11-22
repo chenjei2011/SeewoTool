@@ -2,6 +2,8 @@
 build/** linguist-generated=true
 dist/** linguist-generated=true
 cmake-build-*/** linguist-generated=true
+#排除网页
+docs/** linguist-documentation
 #cpp为主语言
 *.c linguist-language=C
 *.cpp linguist-language=CPP
