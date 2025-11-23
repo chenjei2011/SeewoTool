@@ -1,6 +1,6 @@
 CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_tables.cpp.obj: \
- D:/code/imgui-1.92.3/imgui_tables.cpp D:/code/imgui-1.92.3/imgui.h \
- D:/code/imgui-1.92.3/imconfig.h \
+ D:\code\imgui-1.92.3\imgui_tables.cpp D:\code\imgui-1.92.3\imgui.h \
+ D:\code\imgui-1.92.3\imconfig.h \
  D:/w64devkit/lib/gcc/x86_64-w64-mingw32/15.1.0/include/float.h \
  D:/w64devkit/include/float.h D:/w64devkit/include/crtdefs.h \
  D:/w64devkit/include/corecrt.h D:/w64devkit/include/_mingw.h \
@@ -25,7 +25,7 @@ CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_tables.cpp.obj: \
  D:/w64devkit/lib/gcc/x86_64-w64-mingw32/15.1.0/include/mm_malloc.h \
  D:/w64devkit/include/errno.h \
  D:/w64devkit/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/std_abs.h \
- D:/code/imgui-1.92.3/imgui_internal.h D:/w64devkit/include/stdio.h \
+ D:\code\imgui-1.92.3\imgui_internal.h D:/w64devkit/include/stdio.h \
  D:/w64devkit/include/corecrt_stdio_config.h \
  D:/w64devkit/include/_mingw_off_t.h D:/w64devkit/include/swprintf.inl \
  D:/w64devkit/include/sec_api/stdio_s.h \

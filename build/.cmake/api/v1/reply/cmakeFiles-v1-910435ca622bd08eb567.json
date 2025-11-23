@@ -152,15 +152,7 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "D:/code/SDL2-mingw/SDL2-2.30.11/cmake/sdl2-config-version.cmake"
-		},
-		{
-			"isExternal" : true,
 			"path" : "D:/code/SDL2-mingw/SDL2-2.30.11/x86_64-w64-mingw32/lib/cmake/SDL2/sdl2-config-version.cmake"
-		},
-		{
-			"isExternal" : true,
-			"path" : "D:/code/SDL2-mingw/SDL2-2.30.11/cmake/sdl2-config.cmake"
 		},
 		{
 			"isExternal" : true,
@@ -170,6 +162,24 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "E:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FeatureSummary.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CPack.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CPackComponent.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "E:/Qt/Tools/CMake_64/share/cmake-3.30/Templates/CPackConfig.cmake.in"
+		},
+		{
+			"isExternal" : true,
+			"path" : "E:/Qt/Tools/CMake_64/share/cmake-3.30/Templates/CPackConfig.cmake.in"
 		}
 	],
 	"kind" : "cmakeFiles",

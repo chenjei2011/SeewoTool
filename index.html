@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeewoTool - 希沃教室实用工具</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        /* 头部样式 */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: -20px -20px 40px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 5em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* 主要内容区 */
+        .section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            margin: 20px 0 10px;
+            font-size: 1.4em;
+        }
+
+        /* 功能列表 */
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 3px solid #667eea;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .feature-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .feature-card .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* 代码块样式 */
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        /* 按钮样式 */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #764ba2;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5f3a8a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-outline:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* 下载区域 */
+        .download-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .download-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        /* 贡献者区域 */
+        .contributor-section {
+            background: #e8f0fe;
+            border-left: 4px solid #4285f4;
+        }
+
+        .contributor-section h2 {
+            color: #4285f4;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1em;
+            }
+
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        /* 列表样式 */
+        ul, ol {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+            padding-left: 5px;
+        }
+
+        /* 许可证区域 */
+        .license-section {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+
+        .license-section h2 {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="hero">
+            <span class="logo">🛠️</span>
+            <h1>SeepTool</h1>
+            <p class="subtitle">专为希沃教室设计的实用小工具，让教学更便捷，让技术更简单</p>
+            <div class="btn-group" style="margin-top: 30px;">
+                <a href="#download" class="btn btn-primary">立即下载</a>
+                <a href="https://github.com/chenjei2011/SeewoTool" class="btn btn-outline">GitHub 仓库</a>
+            </div>
+        </header>
+
+        <!-- 关于项目 -->
+        <section class="section">
+            <h2>📚 关于这个软件</h2>
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                这是一个专为希沃（Seewo）教室环境开发的实用工具集。它诞生于作者班级中遇到的实际问题，
+                旨在帮助教师们更轻松地应对日常教学中的技术挑战。
+            </p>
+            
+            <div class="feature-list">
+                <div class="feature-card">
+                    <span class="icon">💾</span>
+                    <h4>U盘检测工具</h4>
+                    <p>当老师习惯性等待360弹窗却不知如何手动打开"此电脑"时，这个工具能自动检测U盘插入并弹出便捷的打开方式。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="icon">⏰</span>
+                    <h4>上课提醒</h4>
+                    <p>完美解决听不到上课铃声的问题，通过视觉提醒确保不会错过上课时间。（功能持续完善中）</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="icon">🎯</span>
+                    <h4>实用至上</h4>
+                    <p>所有功能都源于真实教学场景，不搞花里胡哨，只为解决实际问题。</p>
+                </div>
+            </div>
+
+            <div class="contributor-section section" style="margin-top: 30px;">
+                <h3>🤝 真诚邀请</h3>
+                <p>我们非常欢迎您参与到项目中来，无论是提出建议、反馈问题，还是直接贡献代码和功能。</p>
+                <p>您的每一个想法都可能帮助更多教师解决实际问题！</p>
+            </div>
+        </section>
+
+        <!-- 构建环境 -->
+        <section class="section">
+            <h2>⚙️ 构建环境</h2>
+            <p>项目采用现代化的构建工具链，确保跨平台兼容性和开发效率。</p>
+            
+            <div class="feature-list">
+                <div class="feature-card" style="border-top-color: #28a745;">
+                    <h4>编译器</h4>
+                    <p><strong>MinGW</strong> - 轻量高效的 Windows 编译环境</p>
+                </div>
+                
+                <div class="feature-card" style="border-top-color: #007bff;">
+                    <h4>构建系统</h4>
+                    <p><strong>CMake</strong> - 现代化跨平台构建工具</p>
+                </div>
+                
+                <div class="feature-card" style="border-top-color: #fd7e14;">
+                    <h4>图形界面</h4>
+                    <p><strong>Dear ImGui</strong> - 即时模式 GUI 库，通过 git 子模块拉取</p>
+                </div>
+            </div>
+
+            <h3>快速开始</h3>
+            <div class="code-block">
+# 克隆仓库（包含子模块）
+git clone --recursive https://github.com/chenjei2011/SeewoTool.git
+cd SeewoTool
+
+# 创建构建目录
+mkdir build && cd build
+
+# 生成构建文件
+cmake ..
+
+# 编译项目
+cmake --build .
+            </div>
+            <p style="margin-top: 10px; color: #666;">
+                <em>💡 提示：已在 Windows 7 系统上测试通过，完美兼容</em>
+            </p>
+        </section>
+
+        <!-- 许可证 -->
+        <section class="section license-section">
+            <h2>📄 许可协议</h2>
+            <p>本项目采用 <strong>MIT License</strong>，完全开源自由：</p>
+            <ul>
+                <li>✅ 您可以随意使用、复制、修改本软件</li>
+                <li>✅ 您可以自由分发、销售本软件</li>
+                <li>✅ 您可以用于个人、教育、商业用途</li>
+                <li>✅ 没有任何使用限制</li>
+            </ul>
+            <p style="margin-top: 15px; font-size: 0.9em; color: #856404;">
+                查看完整的 MIT 许可证内容：<a href="https://github.com/chenjei2011/SeewoTool/blob/main/LICENSE" style="color: #856404;">LICENSE 文件</a>
+            </p>
+        </section>
+
+        <!-- 参与创作 -->
+        <section class="section contributor-section">
+            <h2>🚀 加入我们</h2>
+            <p>SeewoTool 的成长离不开社区的支持。无论您是：</p>
+            
+            <div class="feature-list">
+                <div class="feature-card" style="border-top-color: #28a745;">
+                    <h4>👩‍💻 开发者</h4>
+                    <p>欢迎提交 Pull Request，添加新功能或优化现有代码。所有贡献都将被认可！</p>
+                </div>
+                
+                <div class="feature-card" style="border-top-color: #fd7e14;">
+                    <h4>👨‍🏫 教师用户</h4>
+                    <p>您的真实使用反馈是最宝贵的。请告诉我们哪些功能好用，哪些地方需要改进。</p>
+                </div>
+                
+                <div class="feature-card" style="border-top-color: #6f42c1;">
+                    <h4>💡 创意提供者</h4>
+                    <p>有任何关于功能的想法或建议？尽管在 Issues 中提出，让我们一起实现它！</p>
+                </div>
+            </div>
+
+            <h3>如何贡献</h3>
+            <ol>
+                <li>Fork 本仓库</li>
+                <li>创建您的功能分支 (<code>git checkout -b feature/AmazingFeature</code>)</li>
+                <li>提交更改 (<code>git commit -m 'Add some AmazingFeature'</code>)</li>
+                <li>推送到分支 (<code>git push origin feature/AmazingFeature</code>)</li>
+                <li>开启 Pull Request</li>
+            </ol>
+
+            <div class="btn-group" style="margin-top: 30px;">
+                <a href="https://github.com/chenjei2011/SeewoTool/issues" class="btn btn-primary">💬 提出建议</a>
+                <a href="https://github.com/chenjei2011/SeewoTool/pulls" class="btn btn-secondary">🔄 提交代码</a>
+            </div>
+        </section>
+
+        <!-- 下载区域 -->
+        <section id="download" class="download-section">
+            <h2>📥 获取软件</h2>
+            <p>选择适合您的方式获取 SeewoTool</p>
+            <div class="btn-group" style="margin-top: 20px;">
+                <a href="https://github.com/chenjei2011/SeewoTool/releases" class="btn" style="background: white; color: #667eea;">
+                    📦 下载最新版本
+                </a>
+                <a href="https://github.com/chenjei2011/SeewoTool/archive/refs/heads/main.zip" class="btn" style="background: rgba(255,255,255,0.2); color: white;">
+                    🗜️ 下载源码
+                </a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.9;">
+                目前仅支持 Windows 系统，建议 Windows 7 及以上版本
+            </p>
+        </section>
+
+        <!-- 页脚 -->
+        <footer style="text-align: center; padding: 40px 20px 20px; color: #666; border-top: 1px solid #eee; margin-top: 40px;">
+            <p>Made with ❤️ for Teachers | SeewoTool 开源项目</p>
+            <p style="margin-top: 10px;">
+                <a href="https://github.com/chenjei2011/SeewoTool" style="color: #667eea;">GitHub 仓库</a> | 
+                <a href="https://github.com/chenjei2011/SeewoTool/issues" style="color: #667eea;">问题反馈</a>
+            </p>
+            <!-- 新增声明 -->
+            <p style="margin-top: 15px; font-size: 0.85em; opacity: 0.7;">
+                💡 作者并非前端开发者，本网页由 AI 辅助生成
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 添加滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // 观察所有 section
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

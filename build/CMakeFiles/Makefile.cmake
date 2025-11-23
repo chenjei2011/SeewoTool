@@ -7,8 +7,6 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "D:/code/SDL2-mingw/SDL2-2.30.11/cmake/sdl2-config-version.cmake"
-  "D:/code/SDL2-mingw/SDL2-2.30.11/cmake/sdl2-config.cmake"
   "D:/code/SDL2-mingw/SDL2-2.30.11/x86_64-w64-mingw32/lib/cmake/SDL2/sdl2-config-version.cmake"
   "D:/code/SDL2-mingw/SDL2-2.30.11/x86_64-w64-mingw32/lib/cmake/SDL2/sdl2-config.cmake"
   "D:/code/SeewoTool/CMakeLists.txt"
@@ -25,6 +23,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "E:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeRCInformation.cmake"
   "E:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake"
   "E:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake"
+  "E:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CPack.cmake"
+  "E:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CPackComponent.cmake"
   "E:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "E:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake"
   "E:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake"
@@ -39,6 +39,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "E:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake"
   "E:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows.cmake"
   "E:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake"
+  "E:/Qt/Tools/CMake_64/share/cmake-3.30/Templates/CPackConfig.cmake.in"
   )
 
 # The corresponding makefile is:
@@ -49,6 +50,8 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
+  "CPackConfig.cmake"
+  "CPackSourceConfig.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

@@ -1,49 +1,60 @@
 ﻿#include"tools.h"
 #include"gui.h"
+#include <SDL_opengl.h>
+#include "imgui_impl_opengl3.h"
 
 int main(int, char**)
 {
     GUI gui;
     SEEWOTOOL NOW = HOME;
+    
     // 1. 初始化 SDL
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
         return -1;
     }
 
-    // 2. 创建窗口与渲染器
+    // 2. 创建窗口
     SDL_Window* window = SDL_CreateWindow(
-        "ImGui + SDL2 Template",
+        "Hidden", // 这个窗口始终隐藏
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
         800, 600,
-        SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+        SDL_WINDOW_HIDDEN | SDL_WINDOW_OPENGL); // 使用OpenGL上下文
     if (!window) {
         std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
         return -1;
     }
-    SDL_Renderer* renderer = SDL_CreateRenderer(
-        window, -1,
-        SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    if (!renderer) {
-        std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
-        return -1;
-    }
 
-    // 3. 初始化 ImGui
+    // 创建OpenGL上下文
+    SDL_GLContext gl_context = SDL_GL_CreateContext(window);
+    SDL_GL_MakeCurrent(window, gl_context);
+    SDL_GL_SetSwapInterval(1); // 启用VSync
+
+    // 3. 初始化 ImGui（OpenGL后端）
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
-    ImGui::StyleColorsDark();
+    
+    // 启用多视口（核心）
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+    io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+    io.ConfigViewportsNoAutoMerge = true;
+    io.ConfigViewportsNoTaskBarIcon = true;
 
-    ImGui_ImplSDL2_InitForSDLRenderer(window, renderer);
-    ImGui_ImplSDLRenderer2_Init(renderer);
+    
+    ImGui_ImplSDL2_InitForOpenGL(window, gl_context);
+    ImGui_ImplOpenGL3_Init("#version 130");
+
+    // 加载字体
     ImFont* cnFont = io.Fonts->AddFontFromFileTTF(
         "C:\\Windows\\Fonts\\simsun.ttc",
         18.0f,
-        nullptr,                               // 默认配置
-        io.Fonts->GetGlyphRangesChineseFull() // 约 2w+ 汉字
-);
+        nullptr,
+        io.Fonts->GetGlyphRangesChineseFull()
+    );
     io.Fonts->Build();
+
+    gui.cnFont = cnFont;
 
     // 4. 主循环
     bool running = true;
@@ -53,44 +64,43 @@ int main(int, char**)
             ImGui_ImplSDL2_ProcessEvent(&event);
             if (event.type == SDL_QUIT) running = false;
         }
-        // 4.1 开始 ImGui 帧
-        ImGui_ImplSDLRenderer2_NewFrame();
-        ImGui_ImplSDL2_NewFrame();
+
+        ImGui_ImplOpenGL3_NewFrame(); 
+        ImGui_ImplSDL2_NewFrame(); 
         ImGui::NewFrame();
 
-        ImGui::PushFont(cnFont);
-        switch (NOW)
-        {
-        case HOME:
-            NOW=gui.HomePage();
-            break;
-        case SETTING:
-            NOW=gui.SettingPage();
-            break;
-        case TIME:
-            NOW=gui.TimePage();
-            break;
-        case DOTIME:
-            NOW=gui.DoTime();
-            break;
+        //状态机
+        switch (NOW) {
+            case HOME:     NOW = gui.HomePage(); break;
+            case SETTING:  NOW = gui.SettingPage(); break;
+            case TIME:     NOW = gui.TimePage(); break;
+            case DOTIME:   NOW = gui.DoTime(); break;
         }
-        
+       
 
         // 4.3 渲染
         ImGui::Render();
-        SDL_RenderSetScale(renderer, io.DisplayFramebufferScale.x, io.DisplayFramebufferScale.y);
-        SDL_SetRenderDrawColor(renderer, 45, 45, 48, 255);
-        SDL_RenderClear(renderer);
-        ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData(), renderer);
-        SDL_RenderPresent(renderer);
+        
+        // 清除为透明黑
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+        
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        
+        // 更新独立视口窗口
+        if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
+            ImGui::UpdatePlatformWindows();
+            ImGui::RenderPlatformWindowsDefault();
+        }
+        
+        SDL_GL_SwapWindow(window); // 使用OpenGL交换缓冲区
     }
 
-    // 5. 清理
-    ImGui_ImplSDLRenderer2_Shutdown();
+    // 5. 清理（OpenGL版本）
+    ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
-
-    SDL_DestroyRenderer(renderer);
+    SDL_GL_DeleteContext(gl_context);
     SDL_DestroyWindow(window);
     SDL_Quit();
     return 0;

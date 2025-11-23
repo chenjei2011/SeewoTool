@@ -1,5 +1,5 @@
 CMakeFiles/demo.dir/D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.obj: \
- D:/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp \
+ D:\code\imgui-1.92.3\backends\imgui_impl_sdlrenderer2.cpp \
  D:/code/imgui-1.92.3/imgui.h D:/code/imgui-1.92.3/imconfig.h \
  D:/w64devkit/lib/gcc/x86_64-w64-mingw32/15.1.0/include/float.h \
  D:/w64devkit/include/float.h D:/w64devkit/include/crtdefs.h \
@@ -25,7 +25,7 @@ CMakeFiles/demo.dir/D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.ob
  D:/w64devkit/lib/gcc/x86_64-w64-mingw32/15.1.0/include/mm_malloc.h \
  D:/w64devkit/include/errno.h \
  D:/w64devkit/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/std_abs.h \
- D:/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.h \
+ D:\code\imgui-1.92.3\backends\imgui_impl_sdlrenderer2.h \
  D:/w64devkit/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stdint.h \
  D:/w64devkit/include/stdint.h D:/code/SDL2/include/SDL.h \
  D:/code/SDL2/include/SDL_main.h D:/code/SDL2/include/SDL_stdinc.h \

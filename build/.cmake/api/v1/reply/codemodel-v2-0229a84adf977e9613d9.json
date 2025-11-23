@@ -6,7 +6,8 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-0027a05a49d045168fa1.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.13"
@@ -39,7 +40,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "demo::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-demo-Debug-522d9aef4ddb70fa140d.json",
+					"jsonFile" : "target-demo-Debug-bd1901368f1f3619fa4b.json",
 					"name" : "demo",
 					"projectIndex" : 0
 				}

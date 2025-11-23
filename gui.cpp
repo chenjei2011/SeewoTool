@@ -5,29 +5,33 @@
 void usb();
 SEEWOTOOL GUI::HomePage()
 {              // 切换成带中文的字体
-        ImGui::Begin(u8"开始界面");              // u8 保证 UTF-8 字面量
+        ImGui::Begin(u8"开始界面");    
+        if (cnFont) ImGui::PushFont(cnFont);          // u8 保证 UTF-8 字面量
         ImGui::Text(u8"请问你要干什么");
         if (ImGui::Button(u8"设置"))
          { 
-         ImGui::End();
          ImGui::PopFont();
+         ImGui::End();
+         
         return SEEWOTOOL::SETTING;
          }
         if(ImGui::Button(u8"时间"))
         {
-         ImGui::End();
          ImGui::PopFont();
+         ImGui::End();
+         
         return SEEWOTOOL::TIME;   
         }
-        ImGui::End();
         ImGui::PopFont();
+        ImGui::End();
+        
         return SEEWOTOOL::HOME;
 }
 
 SEEWOTOOL GUI::SettingPage()
 {
         ImGui::Begin(u8"设置界面");
-        
+        if (cnFont) ImGui::PushFont(cnFont);
         if(ImGui::Button(u8"开启u盘检测"))
         {
                 std::thread usbThread(usb);
@@ -35,12 +39,14 @@ SEEWOTOOL GUI::SettingPage()
         }
         if(ImGui::Button(u8"返回"))
         {
-            ImGui::End();
+            
             ImGui::PopFont();
+            ImGui::End();
             return SEEWOTOOL::HOME;
         }
-        ImGui::End();
+        
         ImGui::PopFont();
+        ImGui::End();
         return SEEWOTOOL::SETTING;
 
 }
@@ -48,27 +54,31 @@ SEEWOTOOL GUI::SettingPage()
 SEEWOTOOL GUI::TimePage()
 {
     ImGui::Begin(u8"多久上课");
-    
+    if (cnFont) ImGui::PushFont(cnFont);
     if(ImGui::Button(u8"计时"))
     {
-        ImGui::End();
+        
         ImGui::PopFont();
+        ImGui::End();
         return SEEWOTOOL::DOTIME;
     }
     if(ImGui::Button(u8"返回"))
     {
-        ImGui::End();
+        
         ImGui::PopFont();
+        ImGui::End();
         return SEEWOTOOL::HOME;
     }
-    ImGui::End();
+   
     ImGui::PopFont();
+    ImGui::End();
     return SEEWOTOOL::TIME;
 }
 
 SEEWOTOOL GUI::DoTime()
 {
     ImGui::Begin(u8"计时");
+    if (cnFont) ImGui::PushFont(cnFont);
     static char UserTime[128] = u8"输入时间";
     static bool start = false;
     static DWORD startTick = 0;  // 新增：记录开始时的系统滴答数
@@ -100,13 +110,15 @@ SEEWOTOOL GUI::DoTime()
     }
 
     if (ImGui::Button(u8"返回")) {
-        ImGui::End();
+        
         ImGui::PopFont();
+        ImGui::End();
         return SEEWOTOOL::TIME;
     }
 
-    ImGui::End();
+    
     ImGui::PopFont();
+    ImGui::End();
     return SEEWOTOOL::DOTIME;
 }
 

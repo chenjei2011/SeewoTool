@@ -1,1 +1,1 @@
--I"D:/code/imgui-1.92.3" -I"D:/code/imgui-1.92.3/backends" -ID:/code/SDL2/include -ID:/code/SeewoTool/include -isystem "D:/code/SDL2-mingw/SDL2-2.30.11/x86_64-w64-mingw32/include/SDL2"
+-ID:/code/imgui -ID:/code/imgui/backends -ID:/code/SDL2/include -ID:/code/SeewoTool/include -isystem "D:/code/SDL2-mingw/SDL2-2.30.11/x86_64-w64-mingw32/include/SDL2"

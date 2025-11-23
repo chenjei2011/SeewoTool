@@ -1,6 +1,6 @@
 CMakeFiles/demo.dir/gui.cpp.obj: D:/code/SeewoTool/gui.cpp \
- D:/code/SeewoTool/include/tools.h D:/code/imgui-1.92.3/imgui.h \
- D:/code/imgui-1.92.3/imconfig.h \
+ D:/code/SeewoTool/include/tools.h D:/code/imgui/imgui.h \
+ D:/code/imgui/imconfig.h \
  D:/w64devkit/lib/gcc/x86_64-w64-mingw32/15.1.0/include/float.h \
  D:/w64devkit/include/float.h D:/w64devkit/include/crtdefs.h \
  D:/w64devkit/include/corecrt.h D:/w64devkit/include/_mingw.h \
@@ -25,8 +25,8 @@ CMakeFiles/demo.dir/gui.cpp.obj: D:/code/SeewoTool/gui.cpp \
  D:/w64devkit/lib/gcc/x86_64-w64-mingw32/15.1.0/include/mm_malloc.h \
  D:/w64devkit/include/errno.h \
  D:/w64devkit/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/std_abs.h \
- D:/code/imgui-1.92.3/backends/imgui_impl_sdl2.h \
- D:/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.h \
+ D:/code/imgui/backends/imgui_impl_sdl2.h \
+ D:/code/imgui/backends/imgui_impl_sdlrenderer2.h \
  D:/code/SDL2/include/SDL.h D:/code/SDL2/include/SDL_main.h \
  D:/code/SDL2/include/SDL_stdinc.h D:/code/SDL2/include/SDL_config.h \
  D:/code/SDL2/include/SDL_platform.h D:/code/SDL2/include/begin_code.h \

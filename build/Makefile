@@ -65,6 +65,26 @@ CMAKE_BINARY_DIR = D:/code/SeewoTool/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
+	E:/Qt/Tools/CMake_64/bin/cpack.exe --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+.PHONY : package/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
+	E:/Qt/Tools/CMake_64/bin/cpack.exe --config ./CPackSourceConfig.cmake D:/code/SeewoTool/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+.PHONY : package_source/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
@@ -84,6 +104,51 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	E:/Qt/Tools/CMake_64/bin/cmake.exe -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	E:/Qt/Tools/CMake_64/bin/cmake.exe -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	E:/Qt/Tools/CMake_64/bin/cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	E:/Qt/Tools/CMake_64/bin/cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	E:/Qt/Tools/CMake_64/bin/cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	E:/Qt/Tools/CMake_64/bin/cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -129,173 +194,197 @@ demo/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/build
 .PHONY : demo/fast
 
-D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.obj: D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.cpp.obj
-.PHONY : D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.obj
+D_/code/imgui/backends/imgui_impl_opengl3.obj: D_/code/imgui/backends/imgui_impl_opengl3.cpp.obj
+.PHONY : D_/code/imgui/backends/imgui_impl_opengl3.obj
 
 # target to build an object file
-D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.cpp.obj
-.PHONY : D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.cpp.obj
+D_/code/imgui/backends/imgui_impl_opengl3.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/backends/imgui_impl_opengl3.cpp.obj
+.PHONY : D_/code/imgui/backends/imgui_impl_opengl3.cpp.obj
 
-D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.i: D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.cpp.i
-.PHONY : D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.i
+D_/code/imgui/backends/imgui_impl_opengl3.i: D_/code/imgui/backends/imgui_impl_opengl3.cpp.i
+.PHONY : D_/code/imgui/backends/imgui_impl_opengl3.i
 
 # target to preprocess a source file
-D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.cpp.i
-.PHONY : D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.cpp.i
+D_/code/imgui/backends/imgui_impl_opengl3.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/backends/imgui_impl_opengl3.cpp.i
+.PHONY : D_/code/imgui/backends/imgui_impl_opengl3.cpp.i
 
-D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.s: D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.cpp.s
-.PHONY : D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.s
+D_/code/imgui/backends/imgui_impl_opengl3.s: D_/code/imgui/backends/imgui_impl_opengl3.cpp.s
+.PHONY : D_/code/imgui/backends/imgui_impl_opengl3.s
 
 # target to generate assembly for a file
-D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.cpp.s
-.PHONY : D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.cpp.s
+D_/code/imgui/backends/imgui_impl_opengl3.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/backends/imgui_impl_opengl3.cpp.s
+.PHONY : D_/code/imgui/backends/imgui_impl_opengl3.cpp.s
 
-D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.obj: D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.obj
-.PHONY : D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.obj
+D_/code/imgui/backends/imgui_impl_sdl2.obj: D_/code/imgui/backends/imgui_impl_sdl2.cpp.obj
+.PHONY : D_/code/imgui/backends/imgui_impl_sdl2.obj
 
 # target to build an object file
-D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.obj
-.PHONY : D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.obj
+D_/code/imgui/backends/imgui_impl_sdl2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/backends/imgui_impl_sdl2.cpp.obj
+.PHONY : D_/code/imgui/backends/imgui_impl_sdl2.cpp.obj
 
-D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.i: D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.i
-.PHONY : D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.i
+D_/code/imgui/backends/imgui_impl_sdl2.i: D_/code/imgui/backends/imgui_impl_sdl2.cpp.i
+.PHONY : D_/code/imgui/backends/imgui_impl_sdl2.i
 
 # target to preprocess a source file
-D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.i
-.PHONY : D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.i
+D_/code/imgui/backends/imgui_impl_sdl2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/backends/imgui_impl_sdl2.cpp.i
+.PHONY : D_/code/imgui/backends/imgui_impl_sdl2.cpp.i
 
-D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.s: D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.s
-.PHONY : D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.s
+D_/code/imgui/backends/imgui_impl_sdl2.s: D_/code/imgui/backends/imgui_impl_sdl2.cpp.s
+.PHONY : D_/code/imgui/backends/imgui_impl_sdl2.s
 
 # target to generate assembly for a file
-D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.s
-.PHONY : D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.cpp.s
+D_/code/imgui/backends/imgui_impl_sdl2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/backends/imgui_impl_sdl2.cpp.s
+.PHONY : D_/code/imgui/backends/imgui_impl_sdl2.cpp.s
 
-D_/code/imgui-1.92.3/imgui.obj: D_/code/imgui-1.92.3/imgui.cpp.obj
-.PHONY : D_/code/imgui-1.92.3/imgui.obj
+D_/code/imgui/backends/imgui_impl_sdlrenderer2.obj: D_/code/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj
+.PHONY : D_/code/imgui/backends/imgui_impl_sdlrenderer2.obj
 
 # target to build an object file
-D_/code/imgui-1.92.3/imgui.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui.cpp.obj
-.PHONY : D_/code/imgui-1.92.3/imgui.cpp.obj
+D_/code/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj
+.PHONY : D_/code/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj
 
-D_/code/imgui-1.92.3/imgui.i: D_/code/imgui-1.92.3/imgui.cpp.i
-.PHONY : D_/code/imgui-1.92.3/imgui.i
+D_/code/imgui/backends/imgui_impl_sdlrenderer2.i: D_/code/imgui/backends/imgui_impl_sdlrenderer2.cpp.i
+.PHONY : D_/code/imgui/backends/imgui_impl_sdlrenderer2.i
 
 # target to preprocess a source file
-D_/code/imgui-1.92.3/imgui.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui.cpp.i
-.PHONY : D_/code/imgui-1.92.3/imgui.cpp.i
+D_/code/imgui/backends/imgui_impl_sdlrenderer2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/backends/imgui_impl_sdlrenderer2.cpp.i
+.PHONY : D_/code/imgui/backends/imgui_impl_sdlrenderer2.cpp.i
 
-D_/code/imgui-1.92.3/imgui.s: D_/code/imgui-1.92.3/imgui.cpp.s
-.PHONY : D_/code/imgui-1.92.3/imgui.s
+D_/code/imgui/backends/imgui_impl_sdlrenderer2.s: D_/code/imgui/backends/imgui_impl_sdlrenderer2.cpp.s
+.PHONY : D_/code/imgui/backends/imgui_impl_sdlrenderer2.s
 
 # target to generate assembly for a file
-D_/code/imgui-1.92.3/imgui.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui.cpp.s
-.PHONY : D_/code/imgui-1.92.3/imgui.cpp.s
+D_/code/imgui/backends/imgui_impl_sdlrenderer2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/backends/imgui_impl_sdlrenderer2.cpp.s
+.PHONY : D_/code/imgui/backends/imgui_impl_sdlrenderer2.cpp.s
 
-D_/code/imgui-1.92.3/imgui_demo.obj: D_/code/imgui-1.92.3/imgui_demo.cpp.obj
-.PHONY : D_/code/imgui-1.92.3/imgui_demo.obj
+D_/code/imgui/imgui.obj: D_/code/imgui/imgui.cpp.obj
+.PHONY : D_/code/imgui/imgui.obj
 
 # target to build an object file
-D_/code/imgui-1.92.3/imgui_demo.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_demo.cpp.obj
-.PHONY : D_/code/imgui-1.92.3/imgui_demo.cpp.obj
+D_/code/imgui/imgui.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui.cpp.obj
+.PHONY : D_/code/imgui/imgui.cpp.obj
 
-D_/code/imgui-1.92.3/imgui_demo.i: D_/code/imgui-1.92.3/imgui_demo.cpp.i
-.PHONY : D_/code/imgui-1.92.3/imgui_demo.i
+D_/code/imgui/imgui.i: D_/code/imgui/imgui.cpp.i
+.PHONY : D_/code/imgui/imgui.i
 
 # target to preprocess a source file
-D_/code/imgui-1.92.3/imgui_demo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_demo.cpp.i
-.PHONY : D_/code/imgui-1.92.3/imgui_demo.cpp.i
+D_/code/imgui/imgui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui.cpp.i
+.PHONY : D_/code/imgui/imgui.cpp.i
 
-D_/code/imgui-1.92.3/imgui_demo.s: D_/code/imgui-1.92.3/imgui_demo.cpp.s
-.PHONY : D_/code/imgui-1.92.3/imgui_demo.s
+D_/code/imgui/imgui.s: D_/code/imgui/imgui.cpp.s
+.PHONY : D_/code/imgui/imgui.s
 
 # target to generate assembly for a file
-D_/code/imgui-1.92.3/imgui_demo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_demo.cpp.s
-.PHONY : D_/code/imgui-1.92.3/imgui_demo.cpp.s
+D_/code/imgui/imgui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui.cpp.s
+.PHONY : D_/code/imgui/imgui.cpp.s
 
-D_/code/imgui-1.92.3/imgui_draw.obj: D_/code/imgui-1.92.3/imgui_draw.cpp.obj
-.PHONY : D_/code/imgui-1.92.3/imgui_draw.obj
+D_/code/imgui/imgui_demo.obj: D_/code/imgui/imgui_demo.cpp.obj
+.PHONY : D_/code/imgui/imgui_demo.obj
 
 # target to build an object file
-D_/code/imgui-1.92.3/imgui_draw.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_draw.cpp.obj
-.PHONY : D_/code/imgui-1.92.3/imgui_draw.cpp.obj
+D_/code/imgui/imgui_demo.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui_demo.cpp.obj
+.PHONY : D_/code/imgui/imgui_demo.cpp.obj
 
-D_/code/imgui-1.92.3/imgui_draw.i: D_/code/imgui-1.92.3/imgui_draw.cpp.i
-.PHONY : D_/code/imgui-1.92.3/imgui_draw.i
+D_/code/imgui/imgui_demo.i: D_/code/imgui/imgui_demo.cpp.i
+.PHONY : D_/code/imgui/imgui_demo.i
 
 # target to preprocess a source file
-D_/code/imgui-1.92.3/imgui_draw.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_draw.cpp.i
-.PHONY : D_/code/imgui-1.92.3/imgui_draw.cpp.i
+D_/code/imgui/imgui_demo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui_demo.cpp.i
+.PHONY : D_/code/imgui/imgui_demo.cpp.i
 
-D_/code/imgui-1.92.3/imgui_draw.s: D_/code/imgui-1.92.3/imgui_draw.cpp.s
-.PHONY : D_/code/imgui-1.92.3/imgui_draw.s
+D_/code/imgui/imgui_demo.s: D_/code/imgui/imgui_demo.cpp.s
+.PHONY : D_/code/imgui/imgui_demo.s
 
 # target to generate assembly for a file
-D_/code/imgui-1.92.3/imgui_draw.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_draw.cpp.s
-.PHONY : D_/code/imgui-1.92.3/imgui_draw.cpp.s
+D_/code/imgui/imgui_demo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui_demo.cpp.s
+.PHONY : D_/code/imgui/imgui_demo.cpp.s
 
-D_/code/imgui-1.92.3/imgui_tables.obj: D_/code/imgui-1.92.3/imgui_tables.cpp.obj
-.PHONY : D_/code/imgui-1.92.3/imgui_tables.obj
+D_/code/imgui/imgui_draw.obj: D_/code/imgui/imgui_draw.cpp.obj
+.PHONY : D_/code/imgui/imgui_draw.obj
 
 # target to build an object file
-D_/code/imgui-1.92.3/imgui_tables.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_tables.cpp.obj
-.PHONY : D_/code/imgui-1.92.3/imgui_tables.cpp.obj
+D_/code/imgui/imgui_draw.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui_draw.cpp.obj
+.PHONY : D_/code/imgui/imgui_draw.cpp.obj
 
-D_/code/imgui-1.92.3/imgui_tables.i: D_/code/imgui-1.92.3/imgui_tables.cpp.i
-.PHONY : D_/code/imgui-1.92.3/imgui_tables.i
+D_/code/imgui/imgui_draw.i: D_/code/imgui/imgui_draw.cpp.i
+.PHONY : D_/code/imgui/imgui_draw.i
 
 # target to preprocess a source file
-D_/code/imgui-1.92.3/imgui_tables.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_tables.cpp.i
-.PHONY : D_/code/imgui-1.92.3/imgui_tables.cpp.i
+D_/code/imgui/imgui_draw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui_draw.cpp.i
+.PHONY : D_/code/imgui/imgui_draw.cpp.i
 
-D_/code/imgui-1.92.3/imgui_tables.s: D_/code/imgui-1.92.3/imgui_tables.cpp.s
-.PHONY : D_/code/imgui-1.92.3/imgui_tables.s
+D_/code/imgui/imgui_draw.s: D_/code/imgui/imgui_draw.cpp.s
+.PHONY : D_/code/imgui/imgui_draw.s
 
 # target to generate assembly for a file
-D_/code/imgui-1.92.3/imgui_tables.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_tables.cpp.s
-.PHONY : D_/code/imgui-1.92.3/imgui_tables.cpp.s
+D_/code/imgui/imgui_draw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui_draw.cpp.s
+.PHONY : D_/code/imgui/imgui_draw.cpp.s
 
-D_/code/imgui-1.92.3/imgui_widgets.obj: D_/code/imgui-1.92.3/imgui_widgets.cpp.obj
-.PHONY : D_/code/imgui-1.92.3/imgui_widgets.obj
+D_/code/imgui/imgui_tables.obj: D_/code/imgui/imgui_tables.cpp.obj
+.PHONY : D_/code/imgui/imgui_tables.obj
 
 # target to build an object file
-D_/code/imgui-1.92.3/imgui_widgets.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_widgets.cpp.obj
-.PHONY : D_/code/imgui-1.92.3/imgui_widgets.cpp.obj
+D_/code/imgui/imgui_tables.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui_tables.cpp.obj
+.PHONY : D_/code/imgui/imgui_tables.cpp.obj
 
-D_/code/imgui-1.92.3/imgui_widgets.i: D_/code/imgui-1.92.3/imgui_widgets.cpp.i
-.PHONY : D_/code/imgui-1.92.3/imgui_widgets.i
+D_/code/imgui/imgui_tables.i: D_/code/imgui/imgui_tables.cpp.i
+.PHONY : D_/code/imgui/imgui_tables.i
 
 # target to preprocess a source file
-D_/code/imgui-1.92.3/imgui_widgets.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_widgets.cpp.i
-.PHONY : D_/code/imgui-1.92.3/imgui_widgets.cpp.i
+D_/code/imgui/imgui_tables.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui_tables.cpp.i
+.PHONY : D_/code/imgui/imgui_tables.cpp.i
 
-D_/code/imgui-1.92.3/imgui_widgets.s: D_/code/imgui-1.92.3/imgui_widgets.cpp.s
-.PHONY : D_/code/imgui-1.92.3/imgui_widgets.s
+D_/code/imgui/imgui_tables.s: D_/code/imgui/imgui_tables.cpp.s
+.PHONY : D_/code/imgui/imgui_tables.s
 
 # target to generate assembly for a file
-D_/code/imgui-1.92.3/imgui_widgets.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui-1.92.3/imgui_widgets.cpp.s
-.PHONY : D_/code/imgui-1.92.3/imgui_widgets.cpp.s
+D_/code/imgui/imgui_tables.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui_tables.cpp.s
+.PHONY : D_/code/imgui/imgui_tables.cpp.s
+
+D_/code/imgui/imgui_widgets.obj: D_/code/imgui/imgui_widgets.cpp.obj
+.PHONY : D_/code/imgui/imgui_widgets.obj
+
+# target to build an object file
+D_/code/imgui/imgui_widgets.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui_widgets.cpp.obj
+.PHONY : D_/code/imgui/imgui_widgets.cpp.obj
+
+D_/code/imgui/imgui_widgets.i: D_/code/imgui/imgui_widgets.cpp.i
+.PHONY : D_/code/imgui/imgui_widgets.i
+
+# target to preprocess a source file
+D_/code/imgui/imgui_widgets.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui_widgets.cpp.i
+.PHONY : D_/code/imgui/imgui_widgets.cpp.i
+
+D_/code/imgui/imgui_widgets.s: D_/code/imgui/imgui_widgets.cpp.s
+.PHONY : D_/code/imgui/imgui_widgets.s
+
+# target to generate assembly for a file
+D_/code/imgui/imgui_widgets.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/D_/code/imgui/imgui_widgets.cpp.s
+.PHONY : D_/code/imgui/imgui_widgets.cpp.s
 
 IsUsb.obj: IsUsb.cpp.obj
 .PHONY : IsUsb.obj
@@ -424,29 +513,38 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
+	@echo "... package"
+	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... demo"
-	@echo "... D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.obj"
-	@echo "... D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.i"
-	@echo "... D_/code/imgui-1.92.3/backends/imgui_impl_sdl2.s"
-	@echo "... D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.obj"
-	@echo "... D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.i"
-	@echo "... D_/code/imgui-1.92.3/backends/imgui_impl_sdlrenderer2.s"
-	@echo "... D_/code/imgui-1.92.3/imgui.obj"
-	@echo "... D_/code/imgui-1.92.3/imgui.i"
-	@echo "... D_/code/imgui-1.92.3/imgui.s"
-	@echo "... D_/code/imgui-1.92.3/imgui_demo.obj"
-	@echo "... D_/code/imgui-1.92.3/imgui_demo.i"
-	@echo "... D_/code/imgui-1.92.3/imgui_demo.s"
-	@echo "... D_/code/imgui-1.92.3/imgui_draw.obj"
-	@echo "... D_/code/imgui-1.92.3/imgui_draw.i"
-	@echo "... D_/code/imgui-1.92.3/imgui_draw.s"
-	@echo "... D_/code/imgui-1.92.3/imgui_tables.obj"
-	@echo "... D_/code/imgui-1.92.3/imgui_tables.i"
-	@echo "... D_/code/imgui-1.92.3/imgui_tables.s"
-	@echo "... D_/code/imgui-1.92.3/imgui_widgets.obj"
-	@echo "... D_/code/imgui-1.92.3/imgui_widgets.i"
-	@echo "... D_/code/imgui-1.92.3/imgui_widgets.s"
+	@echo "... D_/code/imgui/backends/imgui_impl_opengl3.obj"
+	@echo "... D_/code/imgui/backends/imgui_impl_opengl3.i"
+	@echo "... D_/code/imgui/backends/imgui_impl_opengl3.s"
+	@echo "... D_/code/imgui/backends/imgui_impl_sdl2.obj"
+	@echo "... D_/code/imgui/backends/imgui_impl_sdl2.i"
+	@echo "... D_/code/imgui/backends/imgui_impl_sdl2.s"
+	@echo "... D_/code/imgui/backends/imgui_impl_sdlrenderer2.obj"
+	@echo "... D_/code/imgui/backends/imgui_impl_sdlrenderer2.i"
+	@echo "... D_/code/imgui/backends/imgui_impl_sdlrenderer2.s"
+	@echo "... D_/code/imgui/imgui.obj"
+	@echo "... D_/code/imgui/imgui.i"
+	@echo "... D_/code/imgui/imgui.s"
+	@echo "... D_/code/imgui/imgui_demo.obj"
+	@echo "... D_/code/imgui/imgui_demo.i"
+	@echo "... D_/code/imgui/imgui_demo.s"
+	@echo "... D_/code/imgui/imgui_draw.obj"
+	@echo "... D_/code/imgui/imgui_draw.i"
+	@echo "... D_/code/imgui/imgui_draw.s"
+	@echo "... D_/code/imgui/imgui_tables.obj"
+	@echo "... D_/code/imgui/imgui_tables.i"
+	@echo "... D_/code/imgui/imgui_tables.s"
+	@echo "... D_/code/imgui/imgui_widgets.obj"
+	@echo "... D_/code/imgui/imgui_widgets.i"
+	@echo "... D_/code/imgui/imgui_widgets.s"
 	@echo "... IsUsb.obj"
 	@echo "... IsUsb.i"
 	@echo "... IsUsb.s"
